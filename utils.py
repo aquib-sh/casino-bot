@@ -1,4 +1,5 @@
 import pandas
+import time
 import datetime
 
 class CasinoUtils:
@@ -13,5 +14,8 @@ class CasinoUtils:
         diff_hours = diff_secs // 60 // 60
         return int(diff_hours)
 
+    def time_diff_in_mins(self, start_time) -> int:
+        sec_diff = time.time() - start_time
+        return (sec_diff // 60)
 
 
