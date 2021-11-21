@@ -6,8 +6,6 @@
 
 import os
 import sys
-import undetected_chromedriver.v2 as uc
-import seleniumwire.webdriver as wired_webdriver
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.common.exceptions import NoSuchElementException
@@ -53,7 +51,6 @@ class BotOptions:
 
         if sys.platform == "win32":
             dpath = os.path.abspath(dpath) + ".exe"
-        if undetected : return uc.Chrome(options=opts, executable_path=dpath)
         return webdriver.Chrome(options=opts, executable_path=dpath, desired_capabilities=capa)
 
     def setup_firefox(self, driver_path, behead, proxy_info: dict=None, firefox_profile: str=None):
@@ -106,8 +103,6 @@ class BotOptions:
                     'https':f"https://{proxy_info['Username']}:{proxy_info['Password']}@{proxy_info['PROXY IP:PORT (HTTP)']}",
                 }
             }
-            return wired_webdriver.Firefox(options=opts, executable_path=dpath,
-                firefox_profile=profile, desired_capabilities=desired, seleniumwire_options=options)
 
         return webdriver.Firefox(options=opts, executable_path=dpath,
                 firefox_profile=profile, desired_capabilities=desired)
